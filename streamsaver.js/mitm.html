@@ -142,7 +142,7 @@ function onMessage (event) {
   if (!(data.readableStream || data.transferringReadable)) {
     keepAlive()
   }
-  data = JSON.parse(JSON.stringify(data))
+
   return sw.postMessage(data, transferable)
 }
 
