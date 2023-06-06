@@ -126,5 +126,5 @@ self.onfetch = event => {
   
   event.respondWith(new Response(stream, { headers: responseHeaders }))
 
-  port.postMessage({ debug: 'Download started' })
+  // port.postMessage({ debug: 'Download started' })
 }
