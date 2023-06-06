@@ -144,7 +144,7 @@ function onMessage (event) {
   }
   const datajs= JSON.stringify(data)
   const transferablejs = JSON.stringify(transferable)
-  return sw.postMessage({"data":datajs}, {"transferable":transferablejs})
+  return sw.postMessage({"data":datajs, "transferable":transferablejs})
 }
 
 if (window.opener) {
