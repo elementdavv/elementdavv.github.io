@@ -142,8 +142,8 @@ function onMessage (event) {
   if (!(data.readableStream || data.transferringReadable)) {
     keepAlive()
   }
-  data = JSON.stringify(data)
-  return sw.postMessage(data, transferable)
+
+  return sw.postMessage(data, [ transferable ])
 }
 
 if (window.opener) {
