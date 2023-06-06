@@ -42,7 +42,7 @@ self.onmessage = event => {
   }
 
   map.set(downloadUrl, metadata)
-  port.postMessage({ download: downloadUrl })
+  port.postMessage({ download: "" + downloadUrl })
 }
 
 function createStream (port) {
@@ -126,5 +126,5 @@ self.onfetch = event => {
   
   event.respondWith(new Response(stream, { headers: responseHeaders }))
 
-  // port.postMessage({ debug: 'Download started' })
+  port.postMessage({ debug: 'Download started' })
 }
