@@ -42,7 +42,7 @@ self.onmessage = event => {
   }
 
   map.set(downloadUrl, metadata)
-  port.postMessage({ download: "" + downloadUrl })
+  port.postMessage({ download: downloadUrl })
 }
 
 function createStream (port) {
