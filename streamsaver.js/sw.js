@@ -124,10 +124,7 @@ self.onfetch = event => {
     responseHeaders.set('Content-Disposition', "attachment; filename*=UTF-8''" + fileName)
   }
   
-  try {
-    event.respondWith(new Response(stream, { headers: responseHeaders }))
-  } catch(e) {
-    console.error(e);
-  }
+  event.respondWith(new Response(stream, { headers: responseHeaders }))
+
   port.postMessage({ debug: 'Download started' })
 }
