@@ -66,12 +66,12 @@
     z-index: 9999;
 }
 .action-buttons-section .download-btn .button:after{
-    content: "__MSG_titledownload__";
+    content: "Download this item";
     top: var(--aftertop, 61px);
     left: var(--afterleft, 102px);
 }
 .action-buttons-section .scale-btn:after{
-    content: "__MSG_titlescale__";
+    content: "Choose page quality";
     top: var(--aftertop, 61px);
     left: var(--afterleft, 20px);
 }

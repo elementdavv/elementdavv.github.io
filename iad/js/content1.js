@@ -10,7 +10,7 @@ import PDFDocument from './pdf/document.js';
 import ZIPDocument from './zip/document.js';
 import Queue from './utils/queue.js';
 
-(function(){
+function iad(){
     'use strict';
 
     // const origin = location.origin;                                     // origin
@@ -26,7 +26,7 @@ import Queue from './utils/queue.js';
     <div class='iadlabel'>Quality</div>
 </div>
 <div class='topinblock download-btn'>
-    <button class='button' type='button' onclick='begin();'>
+    <button class='button' type='button' onclick='iad.begin();'>
         <div>
             <span class='iconochive-download'></span>
             <span class='icon-label' id='iadprogressid'></span>
@@ -760,5 +760,5 @@ import Queue from './utils/queue.js';
     // console.log(`${manifest.name} ${manifest.version} in action`);
     console.log(`archive.org Downloader 1.0 in action`);
     // loadScript("/js/stub.js");
-    init();
-})();
+}
+iad.init();
