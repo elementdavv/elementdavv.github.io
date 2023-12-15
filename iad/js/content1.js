@@ -26,7 +26,7 @@ import Queue from './utils/queue.js';
     <div class='iadlabel'>Quality</div>
 </div>
 <div class='topinblock download-btn'>
-    <button class='button' type='button' onclick='begin();'>
+    <button class='button' type='button' onclick='window.iadbegin();'>
         <div>
             <span class='iconochive-download'></span>
             <span class='icon-label' id='iadprogressid'></span>
@@ -228,6 +228,8 @@ import Queue from './utils/queue.js';
             download();
         }
     };
+
+    window.iadbegin = begin;
 
     var filename = "";          // filename to save
     var scale = 1;              // page scale
