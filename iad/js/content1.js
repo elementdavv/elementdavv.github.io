@@ -163,7 +163,7 @@ import Queue from './utils/queue.js';
 
     function init(){
         console.log('init begin');
-        loadCss("../css/iad.css");
+        loadCss("https://elementdavv.github.io/iad/css/iad.css");
         loadButton();
         loadScales();
         getBookInfo();
