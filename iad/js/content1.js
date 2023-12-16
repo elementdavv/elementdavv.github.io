@@ -743,13 +743,13 @@ import Queue from './utils/queue.js';
         return document.getElementsByClassName(cls);
     }
 
-    function getMessage(messageName, substitutions) {
-        return chrome.i18n.getMessage(messageName, substitutions);
-    }
+    // function getMessage(messageName, substitutions) {
+    //     return chrome.i18n.getMessage(messageName, substitutions);
+    // }
 
-    if (sw) {
-        streamSaver.mitm = 'https://elementdavv.github.io/streamsaver.js/mitm.html?version=2.0.0';
-    }
+    // if (sw) {
+    //     streamSaver.mitm = 'https://elementdavv.github.io/streamsaver.js/mitm.html?version=2.0.0';
+    // }
 
     // if (ff) {
     //     // native TransformStream and WritableStream only work in firefox 113, use ponyfill instead
