@@ -538,6 +538,7 @@ import Queue from './utils/queue.js';
     var doc = null;             // pdf document object
 
     async function createDoc() {
+        window.job.open(filename);
         if (ctrl) {
             await createZIPDoc();
         }
