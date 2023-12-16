@@ -141,7 +141,7 @@ class PDFDocument {
 
   _write(data) {
     // if (!this.error) this.writer.write(TBuf.convert(data)).catch(e=>this.error=e);
-    if (!this.error) window.job.write(TBuf.convert2(data)).catch(e=>this.error=e);
+    window.job.write(TBuf.convert2(data));
     return (this._offset += (data.byteLength ? data.byteLength : data.length));
   }
 
