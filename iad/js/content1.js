@@ -391,7 +391,7 @@ import Queue from './utils/queue.js';
         if (++complete >= jobcount) {
             await clear();
             completenotify();
-            returnBook();
+            // returnBook();
         }
         else {
             updatenotify();
@@ -410,6 +410,7 @@ import Queue from './utils/queue.js';
         doc.end();
         // await writer.ready;
         // await writer.close();
+        window.job.close();
     }
 
     function dispatch() {
@@ -494,6 +495,8 @@ import Queue from './utils/queue.js';
                 console.log(`${e} when abort writer`);
             }).finally(writer = null);
         }
+
+        window.job.abort();
 
         if (filehandle?.remove) {
             // Brave may throw error
@@ -661,7 +664,7 @@ import Queue from './utils/queue.js';
         console.log('start');
         teststart();
         progress.classList.add('iadprogress');
-        progress.textContent = getMessage("downloading");
+        progress.textContent = "Downloading";
         progress.style.width = '0%';
         refreshTip();
         status = 1;
@@ -675,7 +678,7 @@ import Queue from './utils/queue.js';
         const [m, s] = testend();
         console.log(`download completed in ${m}m${s}s`);
         progress.classList.remove('iadprogress');
-        progress.textContent = getMessage("complete");
+        progress.textContent = "Completed";
         refreshTip();
         status = 2;
     }
@@ -683,7 +686,7 @@ import Queue from './utils/queue.js';
     function failnotify() {
         console.log('failed');
         progress.classList.remove('iadprogress');
-        progress.textContent = getMessage("fail");
+        progress.textContent = "Failed";
         refreshTip();
         status = 3;
     }
