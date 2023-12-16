@@ -5,7 +5,7 @@
  * Distributed under terms of the GPL3 license.
  */
 
-import './utils/streamsaver.js';
+// import './utils/streamsaver.js';
 import PDFDocument from './pdf/document.js';
 import ZIPDocument from './zip/document.js';
 import Queue from './utils/queue.js';
@@ -15,7 +15,8 @@ import Queue from './utils/queue.js';
 
     // const origin = location.origin;                                     // origin
     // const extid = chrome.runtime.getURL('').match(/[\-0-9a-z]+/g)[1];   // extension host
-    const sw = !window.showSaveFilePicker;                              // is use service worker
+    // const sw = !window.showSaveFilePicker;                              // is use service worker
+    const sw = false;
     // const ff = /Firefox/.test(navigator.userAgent);                     // is firefox
 
     const buttonstring = `
@@ -120,7 +121,8 @@ import Queue from './utils/queue.js';
         console.log('get book info');
         fileid = window.br.bookId;
         data = window.br.data.flat();
-        pagecount = data.length;
+        // pagecount = data.length;
+        pagecount = 1;
     }
 
     var info = {};              // book metadata
@@ -249,7 +251,6 @@ import Queue from './utils/queue.js';
                 if (streamSaver.swready) {
                     const message = 'sw ready';
                     console.log(message);
-                    getLeafs();
                 }
                 else {
                     waitsw();
@@ -286,7 +287,6 @@ import Queue from './utils/queue.js';
             if (streamSaver.swready) {
                 const message = 'sw ready';
                 console.log(message);
-                getLeafs();
             }
             else {
                 // swaitcreate = false;
@@ -316,7 +316,7 @@ import Queue from './utils/queue.js';
     async function getFile() {
         try {
             if (sw) {
-                console.log('notify browser: new');
+                // console.log('notify browser: new');
                 // await chrome.runtime.sendMessage({cmd: 'new', fileid: filename});
                 createDocSW();
             }
@@ -408,8 +408,8 @@ import Queue from './utils/queue.js';
     async function clear() {
         ac = null;
         doc.end();
-        await writer.ready;
-        await writer.close();
+        // await writer.ready;
+        // await writer.close();
     }
 
     function dispatch() {
@@ -547,9 +547,9 @@ import Queue from './utils/queue.js';
     }
 
     function createDocSW() {
-        const writable = streamSaver.createWriteStream(filename);
-        // writer.write(uInt8)
-        writer = writable.getWriter();
+        // const writable = streamSaver.createWriteStream(filename);
+        // // writer.write(uInt8)
+        // writer = writable.getWriter();
 
         if (ctrl) {
             createZIPDocSW();
@@ -560,46 +560,48 @@ import Queue from './utils/queue.js';
     }
 
     async function createZIPDoc() {
-        const options = {
-            startIn: 'downloads'
-            , suggestedName: filename
-            , types: [
-                {
-                    description: 'Zip archive'
-                    , accept: {
-                        'application/zip': ['.zip']
-                    }
-                }
-            ]
-        };
+        // const options = {
+        //     startIn: 'downloads'
+        //     , suggestedName: filename
+        //     , types: [
+        //         {
+        //             description: 'Zip archive'
+        //             , accept: {
+        //                 'application/zip': ['.zip']
+        //             }
+        //         }
+        //     ]
+        // };
 
-        filehandle = await showSaveFilePicker(options);
-        const writable = await filehandle.createWritable();
-        // writer.write(ArrayBuffer/TypedArray/DataView/Blob/String/StringLiteral)
-        writer = await writable.getWriter();
-        doc = new ZIPDocument(writer);
+        // filehandle = await showSaveFilePicker(options);
+        // const writable = await filehandle.createWritable();
+        // // writer.write(ArrayBuffer/TypedArray/DataView/Blob/String/StringLiteral)
+        // writer = await writable.getWriter();
+        // doc = new ZIPDocument(writer);
+        doc = new ZIPDocument(null);
     }
 
     async function createPDFDoc() {
-        const options = {
-            startIn: 'downloads'
-            , suggestedName: filename
-            , types: [
-                {
-                    description: 'Portable Document Format (PDF)'
-                    , accept: {
-                        'application/pdf': ['.pdf']
-                    }
-                }
-            ]
-        };
+        // const options = {
+        //     startIn: 'downloads'
+        //     , suggestedName: filename
+        //     , types: [
+        //         {
+        //             description: 'Portable Document Format (PDF)'
+        //             , accept: {
+        //                 'application/pdf': ['.pdf']
+        //             }
+        //         }
+        //     ]
+        // };
 
-        filehandle = await showSaveFilePicker(options);
-        const writable = await filehandle.createWritable();
-        // writer.write(ArrayBuffer/TypedArray/DataView/Blob/String/StringLiteral)
-        writer = await writable.getWriter();
+        // filehandle = await showSaveFilePicker(options);
+        // const writable = await filehandle.createWritable();
+        // // writer.write(ArrayBuffer/TypedArray/DataView/Blob/String/StringLiteral)
+        // writer = await writable.getWriter();
 
-        doc = new PDFDocument(writer, {
+        // doc = new PDFDocument(writer, {
+        doc = new PDFDocument(null, {
             pagecount
             , info
         });

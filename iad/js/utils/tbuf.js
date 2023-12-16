@@ -181,4 +181,18 @@ const TBuf = {};
         return chunk;
     }
 
+    const textDecoder = new TextDecoder();
+
+    // data to String
+    TBuf.convert2 = (chunk) => {
+        if (chunk instanceof String || typeof chunk == 'string') {
+            chunk += '\n';
+        }
+        else {
+            chunk = textDecoder.decode(chunk);
+        }
+
+        return chunk;
+    }
+
 export default TBuf;
