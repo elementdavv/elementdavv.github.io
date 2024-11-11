@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# this file has bee deprecated
+# the root certificate was used
 export CLASSPATH=bcprov-jdk18on-1.78.1.jar
 
 SERVER=hathitrust.org:443
